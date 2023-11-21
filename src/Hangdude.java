@@ -1,6 +1,11 @@
 import java.util.Scanner;
+import java.net.HttpURLConnection;
 import java.util.Arrays;
 import java.util.Random;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Hangdude {
 
@@ -13,6 +18,7 @@ public class Hangdude {
     }
 
     public static void main(String[] args) {
+        
 
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
@@ -26,11 +32,11 @@ public class Hangdude {
         System.out.println(cars[randomNmb]);
 
         int tries = 0;
-        int max_tries = 5;
+        int max_tries = 7;
         char[] newArr = new char[length];
 
         for (int i = 0; i < length; i++) {
-            newArr[i] = 'X';
+            newArr[i] = '-';
         }
         while (!Arrays.equals(newArr, charArray) && max_tries > 0) {
 
