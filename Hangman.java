@@ -25,8 +25,7 @@ public class Hangman {
 
   public void removeChance() {
     this.remainingTries--;
-}
-
+  }
 
   public int getTries() {
     return this.remainingTries;
@@ -44,9 +43,6 @@ public class Hangman {
       removeChance();
       System.out.println("Failed to guess, tries remaining:" + getTries());
     }
-    for (char c : guessedLetters) {
-      System.out.print(c);
-    }
   }
 
   public char[] censoredWord(String word) {
@@ -59,9 +55,25 @@ public class Hangman {
 
   public void playGame() {
     char[] toGuess = censoredWord(secretWord);
-    System.out.println(toGuess);
-    System.out.println(secretWord);
-    guessLetters('x');
+    System.out.println("Guess the word: " + String.valueOf(toGuess));
+
+    while (remainingTries > 0) {
+      System.out.println("Enter a letter: ");
+      char guess = scanner.next().charAt(0);
+      guessLetters(guess);
+      System.out.println("Guessed letters: " + String.valueOf(guessedLetters));
+
+      if (Arrays.equals(guessedLetters, secretWord.toCharArray())) {
+        System.out.println(
+          "Congratulations! You've guessed the word correctly: " + secretWord
+        );
+        return;
+      }
+    }
+
+    System.out.println(
+      "Sorry, you've run out of tries. The correct word was: " + secretWord
+    );
   }
 
   public static void main(String[] args) {
